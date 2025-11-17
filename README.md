@@ -2,6 +2,10 @@
 
 Backend + frontend tooling for generating Manim-based math videos with Claude.
 
+
+https://github.com/user-attachments/assets/f6547a68-eab7-46be-a24c-c0f8c58d58bd
+
+
 ## Prerequisites
 
 - Docker + Docker Compose
