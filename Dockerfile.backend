@@ -1,0 +1,139 @@
+FROM oven/bun:1.1.30-debian
+
+LABEL org.opencontainers.image.source="https://github.com/your-org/ai-math-maker" \
+      org.opencontainers.image.description="Backend + worker environment for AI Math Maker" \
+      org.opencontainers.image.licenses="MIT"
+
+ENV BUN_INSTALL=/usr/local/.bun \
+    APP_HOME=/app \
+    MANIM_DIR=/app/packages/math-image-creator \
+    DEST_DIR=/app/packages/ai-math-maker/public \
+    CLAUDE_AUTH_RETRY_DELAY=30 \
+    APP_USER=appuser \
+    PNPM_HOME=/usr/local/share/pnpm
+
+ENV PATH="/usr/local/.bun/bin:/root/.bun/bin:${PNPM_HOME}:/usr/local/bin:${PATH}"
+
+WORKDIR ${APP_HOME}
+
+# Install system dependencies required by Bun, Manim, and ffmpeg
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+      ca-certificates \
+      bash \
+      curl \
+      git \
+      python3 \
+      python3-dev \
+      python3-gi \
+      python3-venv \
+      python3-pip \
+      ffmpeg \
+      libcairo2 \
+      libcairo2-dev \
+      libpango-1.0-0 \
+      libpangocairo-1.0-0 \
+      libpango1.0-dev \
+      libgirepository1.0-dev \
+      gobject-introspection \
+      fonts-dejavu-core \
+      dvisvgm \
+      latexmk \
+      texlive \
+      texlive-fonts-extra \
+      texlive-fonts-recommended \
+      texlive-latex-extra \
+      pkg-config \
+      build-essential \
+      gosu && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install pnpm static binary
+RUN set -eux; \
+    arch="$(uname -m)"; \
+    case "$arch" in \
+      x86_64) pnpm_url="https://github.com/pnpm/pnpm/releases/download/v9.15.9/pnpm-linuxstatic-x64";; \
+      aarch64) pnpm_url="https://github.com/pnpm/pnpm/releases/download/v9.15.9/pnpm-linuxstatic-arm64";; \
+      *) echo "Unsupported architecture: $arch" >&2; exit 1;; \
+    esac; \
+    curl -fsSL "$pnpm_url" -o /usr/local/bin/pnpm; \
+    chmod +x /usr/local/bin/pnpm
+RUN mkdir -p ${PNPM_HOME}
+
+# Install Node.js (needed for postinstall scripts)
+RUN set -eux; \
+    arch="$(uname -m)"; \
+    case "$arch" in \
+      x86_64) node_url="https://nodejs.org/dist/v22.11.0/node-v22.11.0-linux-x64.tar.xz";; \
+      aarch64) node_url="https://nodejs.org/dist/v22.11.0/node-v22.11.0-linux-arm64.tar.xz";; \
+      *) echo "Unsupported architecture: $arch" >&2; exit 1;; \
+    esac; \
+    curl -fsSL "$node_url" -o /tmp/node.tar.xz; \
+    mkdir -p /usr/local/lib/nodejs; \
+    tar -xJf /tmp/node.tar.xz -C /usr/local/lib/nodejs; \
+    rm /tmp/node.tar.xz; \
+    ln -s /usr/local/lib/nodejs/node-v22.11.0-linux-*/bin/node /usr/local/bin/node; \
+    ln -s /usr/local/lib/nodejs/node-v22.11.0-linux-*/bin/npm /usr/local/bin/npm; \
+    ln -s /usr/local/lib/nodejs/node-v22.11.0-linux-*/bin/npx /usr/local/bin/npx
+
+# Install Claude CLI via pnpm global
+RUN pnpm add -g @anthropic-ai/claude-code && \
+    chmod -R a+rx ${PNPM_HOME} && \
+    ln -sf ${PNPM_HOME}/claude /usr/local/bin/claude && \
+    if [ -f "${PNPM_HOME}/claude-code" ]; then ln -sf ${PNPM_HOME}/claude-code /usr/local/bin/claude-code; else ln -sf /usr/local/bin/claude /usr/local/bin/claude-code; fi
+
+# Install Claude CLI (Anthropic) and ensure pip uses the newer python
+RUN python3 -m pip install --no-cache-dir --upgrade pip && \
+    python3 -m pip install --no-cache-dir anthropic
+
+# Copy workspace manifests first for better caching
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
+COPY tsconfig.json tsconfig.base.json ./ 
+
+# Copy monorepo packages
+COPY packages ./packages
+COPY patches ./patches
+
+# Install JavaScript/TypeScript dependencies
+RUN pnpm install --no-frozen-lockfile
+
+# Set up Python virtual environment for Manim scripts
+RUN python3 -m venv ${MANIM_DIR}/.venv && \
+    . ${MANIM_DIR}/.venv/bin/activate && \
+    python -m pip install --no-cache-dir --upgrade pip && \
+    python -m pip install --no-cache-dir manim numpy pillow importlib_metadata
+
+# Replace bundled libx264 with one compiled without SVE2 to avoid illegal
+# instructions on ARM hosts (e.g. Apple silicon Docker).
+RUN set -eux; \
+    PYTHON_LIB="$(${MANIM_DIR}/.venv/bin/python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')"; \
+    AV_LIB_DIR="${PYTHON_LIB}/av.libs"; \
+    TMPDIR=$(mktemp -d); \
+    git clone --depth 1 https://code.videolan.org/videolan/x264.git "${TMPDIR}/x264"; \
+    cd "${TMPDIR}/x264"; \
+    sed -i 's/#define X264_BUILD .*/#define X264_BUILD 164/' x264.h; \
+    sed -i 's/#define X264_POINTVER .*/#define X264_POINTVER "0.164.x"/' x264.h; \
+    ./configure --prefix=/usr/local --enable-shared --disable-cli --disable-asm; \
+    make -j"$(nproc)"; \
+    make install; \
+    cp /usr/local/lib/libx264.so.164 "${AV_LIB_DIR}/libx264-261886f5.so.164"; \
+    rm -rf "${TMPDIR}"
+
+# Create non-root runtime user
+RUN useradd -ms /bin/bash appuser && \
+    mkdir -p /data/public /root/.anthropic && \
+    ln -s /root/.anthropic /home/appuser/.anthropic && \
+    chown -h appuser:appuser /home/appuser/.anthropic && \
+    chown -R appuser:appuser ${APP_HOME}
+
+# Install bun dependencies (already via pnpm). Build step can be added later if desired
+# RUN pnpm --filter backend build
+
+# Copy Docker scripts
+COPY docker/backend-entrypoint.sh /app/docker/backend-entrypoint.sh
+RUN chmod +x /app/docker/backend-entrypoint.sh
+
+EXPOSE 3001
+
+ENTRYPOINT ["/app/docker/backend-entrypoint.sh"]
+CMD ["bun", "run", "packages/backend/src/server.ts"]

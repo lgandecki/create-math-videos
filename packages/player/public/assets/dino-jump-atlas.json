@@ -1,0 +1,271 @@
+{
+	"textures": [
+		{
+			"image": "dino-jump-atlas",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1229,
+				"h": 2040
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Jump (10).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 33,
+						"y": 28,
+						"w": 402,
+						"h": 444
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 402,
+						"h": 444
+					}
+				},
+				{
+					"filename": "Jump (11).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 45,
+						"w": 405,
+						"h": 408
+					},
+					"frame": {
+						"x": 0,
+						"y": 444,
+						"w": 405,
+						"h": 408
+					}
+				},
+				{
+					"filename": "Jump (5).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 35,
+						"y": 20,
+						"w": 413,
+						"h": 401
+					},
+					"frame": {
+						"x": 402,
+						"y": 0,
+						"w": 413,
+						"h": 401
+					}
+				},
+				{
+					"filename": "Jump (9).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 35,
+						"y": 20,
+						"w": 412,
+						"h": 401
+					},
+					"frame": {
+						"x": 0,
+						"y": 852,
+						"w": 412,
+						"h": 401
+					}
+				},
+				{
+					"filename": "Jump (6).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 34,
+						"y": 19,
+						"w": 414,
+						"h": 397
+					},
+					"frame": {
+						"x": 405,
+						"y": 401,
+						"w": 414,
+						"h": 397
+					}
+				},
+				{
+					"filename": "Jump (8).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 33,
+						"y": 19,
+						"w": 414,
+						"h": 396
+					},
+					"frame": {
+						"x": 815,
+						"y": 0,
+						"w": 414,
+						"h": 396
+					}
+				},
+				{
+					"filename": "Jump (1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 31,
+						"w": 369,
+						"h": 394
+					},
+					"frame": {
+						"x": 0,
+						"y": 1253,
+						"w": 369,
+						"h": 394
+					}
+				},
+				{
+					"filename": "Jump (7).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 32,
+						"y": 18,
+						"w": 414,
+						"h": 393
+					},
+					"frame": {
+						"x": 0,
+						"y": 1647,
+						"w": 414,
+						"h": 393
+					}
+				},
+				{
+					"filename": "Jump (4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 67,
+						"y": 78,
+						"w": 383,
+						"h": 381
+					},
+					"frame": {
+						"x": 369,
+						"y": 1253,
+						"w": 383,
+						"h": 381
+					}
+				},
+				{
+					"filename": "Jump (12).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 52,
+						"w": 401,
+						"h": 377
+					},
+					"frame": {
+						"x": 414,
+						"y": 1634,
+						"w": 401,
+						"h": 377
+					}
+				},
+				{
+					"filename": "Jump (2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 71,
+						"y": 88,
+						"w": 382,
+						"h": 337
+					},
+					"frame": {
+						"x": 412,
+						"y": 798,
+						"w": 382,
+						"h": 337
+					}
+				},
+				{
+					"filename": "Jump (3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 73,
+						"y": 92,
+						"w": 380,
+						"h": 333
+					},
+					"frame": {
+						"x": 752,
+						"y": 1135,
+						"w": 380,
+						"h": 333
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7"
+	}
+}

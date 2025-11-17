@@ -1,0 +1,53 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    environment: lucetius
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_HOST: ${{ vars.DEPLOY_HOST }}
+      DEPLOY_USER: ${{ vars.DEPLOY_USER }}
+      DEPLOY_DIR_BACKEND: ${{ vars.DEPLOY_DIR_BACKEND }}
+      DEPLOY_DIR_FRONTEND_ADMIN: ${{ vars.DEPLOY_DIR_FRONTEND_ADMIN }}
+      DEPLOY_DIR_FRONTEND_PLAYER: ${{ vars.DEPLOY_DIR_FRONTEND_PLAYER }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "23"
+          cache: "pnpm"
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - run: pnpm install --no-frozen-lockfile
+
+      - run: pnpm test
+
+      - name: Deploy backend
+        run: rsync -av --exclude='.*' --exclude='dist/' --exclude='packages/backend/lessons/' --exclude='node_modules/' --filter='+ /packages/' --filter='+ /packages/backend/***' --filter='- /packages/*' ./ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR_BACKEND/"
+
+      - name: Update backend dependencies
+        run: ssh "$DEPLOY_USER@$DEPLOY_HOST" "set -x && export PATH=\$HOME/.local/share/pnpm:\$PATH && cd $DEPLOY_DIR_BACKEND && pnpm install --no-frozen-lockfile"
+
+      - run: pnpm bundle
+
+      - name: Deploy admin frontend
+        run: rsync -av ./packages/admin/dist/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR_FRONTEND_ADMIN/"
+
+      - name: Deploy player frontend
+        run: rsync -av ./packages/player/dist/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR_FRONTEND_PLAYER/"

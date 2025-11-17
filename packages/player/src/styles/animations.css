@@ -1,0 +1,102 @@
+@keyframes text-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-text-blink {
+  animation: text-blink 1s step-end infinite;
+}
+
+@keyframes pulse-button-strong {
+  0%,
+  100% {
+    opacity: 0.925;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.07);
+  }
+}
+
+@keyframes pulse-button {
+  0%,
+  100% {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulse-button-weak {
+  0%,
+  100% {
+    opacity: 0.975;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes border-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(59, 130, 246, 0);
+  }
+  50% {
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+  }
+}
+
+.animate-pulse-button {
+  animation: pulse-button 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-button-strong {
+  animation: pulse-button-strong 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-glow {
+  animation: border-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-button-weak {
+  animation: pulse-button-weak 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-button-strong-glow {
+  animation:
+    pulse-button-strong 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite,
+    border-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-button-glow {
+  animation:
+    pulse-button 2s cubic-bezier(0.4, 0, 0.6, 1) infinite,
+    border-glow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-button-weak-glow {
+  animation:
+    pulse-button-weak 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite,
+    border-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}

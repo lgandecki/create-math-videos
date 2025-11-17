@@ -1,0 +1,88 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.connection-status {
+  font-size: 1.2em;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+}
+
+.video-form {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.video-form input {
+  flex: 1;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.video-form input:focus {
+  border-color: #646cff;
+}
+
+.video-form input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.video-form button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  background-color: #646cff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.video-form button:hover:not(:disabled) {
+  background-color: #535bf2;
+}
+
+.video-form button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.creating-status {
+  font-size: 1.1rem;
+  color: #646cff;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

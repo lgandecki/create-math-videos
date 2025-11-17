@@ -1,0 +1,58 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/server.d.ts",
+      "default": "./src/server.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "bun --watch src/server.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ai-sdk/google": "^2.0.26",
+    "@ai-sdk/openai": "^2.0.59",
+    "@google/genai": "^1.9.0",
+    "@openrouter/ai-sdk-provider": "^1.2.0",
+    "@streamparser/json": "^0.0.22",
+    "@trpc/server": "^11.4.3",
+    "@types/multer": "^2.0.0",
+    "@types/ws": "^8.18.1",
+    "ai": "^5.0.85",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "diff": "^8.0.2",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mammoth": "^1.9.1",
+    "mime": "^4.0.7",
+    "multer": "^2.0.1",
+    "openai": "5.10.1",
+    "pdf-parse": "^1.1.1",
+    "socket.io": "^4.8.1",
+    "turndown": "^7.2.0",
+    "uuid": "^11.1.0",
+    "ws": "^8.18.3",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.14",
+    "@types/pdf-parse": "^1.1.5",
+    "@types/turndown": "^5.0.5",
+    "@vitejs/plugin-react": "^4.6.0",
+    "esbuild": "^0.25.8",
+    "typescript": "^5.8.3",
+    "undici-types": "^7.12.0"
+  }
+}

@@ -1,0 +1,23 @@
+// tsconfig.base.json
+{
+  "compilerOptions": {
+    /* Base Options */
+    "target": "es2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+
+    /* Module Resolution */
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    /* Strictness & Best Practices */
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Bundler/Vite specific */
+    "isolatedModules": true,
+    "noEmit": true
+  }
+}

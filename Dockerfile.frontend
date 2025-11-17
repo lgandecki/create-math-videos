@@ -1,0 +1,49 @@
+# syntax=docker/dockerfile:1.6
+
+ARG NODE_VERSION=20-alpine
+ARG VITE_API_URL=http://localhost:3001
+
+FROM node:${NODE_VERSION} AS build
+
+ENV PNPM_HOME=/root/.local/share/pnpm \
+    PATH=$PNPM_HOME:$PATH \
+    APP_HOME=/app
+
+WORKDIR ${APP_HOME}
+
+RUN corepack enable && corepack prepare pnpm@10.20.0 --activate
+ENV HUSKY=0
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
+COPY tsconfig.json tsconfig.base.json ./
+COPY packages ./packages
+COPY patches ./patches
+
+# Build arguments for Vite environment
+ARG VITE_API_URL
+ENV VITE_API_URL=${VITE_API_URL}
+
+RUN pnpm install --frozen-lockfile && \
+    pnpm --dir packages/ai-math-maker build
+
+FROM nginx:1.27-alpine AS runtime
+
+ARG VITE_API_URL
+ENV DATA_PUBLIC=/data/public \
+    NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx \
+    VITE_API_URL=${VITE_API_URL}
+
+RUN apk add --no-cache bash
+
+COPY --from=build /app/packages/ai-math-maker/dist /usr/share/nginx/html
+
+COPY docker/frontend-nginx.conf /etc/nginx/conf.d/default.conf
+
+RUN mkdir -p ${DATA_PUBLIC} && \
+    chown -R nginx:nginx ${DATA_PUBLIC}
+
+VOLUME ["${DATA_PUBLIC}"]
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

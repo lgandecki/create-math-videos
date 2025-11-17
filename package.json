@@ -1,0 +1,50 @@
+{
+  "name": "lessonplayer-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "bundle": "turbo bundle",
+    "typeBuild": "turbo typeBuild",
+    "dev": "turbo dev --ui=tui",
+    "dev:main": "turbo dev --filter=player-web --filter=backend",
+    "dev:admin": "turbo dev --filter=admin",
+    "dev:backend": "turbo dev --filter=backend",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test"
+  },
+  "packageManager": "pnpm@10.13.1",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react-katex": "^3.0.4",
+    "husky": "^9.1.7",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.5",
+    "typescript": "^5.8.3"
+  },
+  "lint-staged": {
+    "*.{js,css,md,ts,tsx}": "prettier --write"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "pdf-parse": "patches/pdf-parse.patch"
+    },
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "esbuild"
+    ]
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^2.0.26",
+    "@types/katex": "^0.16.7",
+    "ai": "^5.0.85",
+    "katex": "^0.16.22",
+    "react-katex": "^3.1.0",
+    "zod": "^3.25.76"
+  }
+}

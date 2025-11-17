@@ -1,0 +1,31 @@
+# Core directories
+.git
+.gitignore
+node_modules
+**/node_modules
+.turbo
+
+# Local environment artifacts
+.env
+.env.*
+!.env.example
+pnpm-debug.log*
+bun.lockb
+*.log
+dist
+build
+coverage
+.DS_Store
+
+# Large generated media (runtime only)
+packages/ai-math-maker/public/**
+!packages/ai-math-maker/public/placeholder.svg
+!packages/ai-math-maker/public/favicon.ico
+!packages/ai-math-maker/public/robots.txt
+
+# Virtual environments
+**/.venv
+venv
+
+# Uploads/runtime directories
+packages/backend/uploads

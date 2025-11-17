@@ -1,0 +1,19 @@
+import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
+
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  server: {
+    watch: {
+      ignored: ["**/lessons/**"],
+    },
+    proxy: {
+      "/ws": {
+        target: "http://localhost:3001",
+        ws: true,
+      },
+    },
+  },
+});

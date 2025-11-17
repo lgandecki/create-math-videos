@@ -1,0 +1,187 @@
+{
+	"textures": [
+		{
+			"image": "dino-dead-atlas",
+			"format": "RGBA8888",
+			"size": {
+				"w": 2030,
+				"h": 600
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Dead (5).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 104,
+						"y": 212,
+						"w": 561,
+						"h": 222
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 561,
+						"h": 222
+					}
+				},
+				{
+					"filename": "Dead (6).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 109,
+						"y": 234,
+						"w": 552,
+						"h": 204
+					},
+					"frame": {
+						"x": 561,
+						"y": 0,
+						"w": 552,
+						"h": 204
+					}
+				},
+				{
+					"filename": "Dead (4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 123,
+						"y": 194,
+						"w": 491,
+						"h": 244
+					},
+					"frame": {
+						"x": 1113,
+						"y": 0,
+						"w": 491,
+						"h": 244
+					}
+				},
+				{
+					"filename": "Dead (3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 120,
+						"y": 153,
+						"w": 426,
+						"h": 315
+					},
+					"frame": {
+						"x": 1604,
+						"y": 0,
+						"w": 426,
+						"h": 315
+					}
+				},
+				{
+					"filename": "Dead (2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 77,
+						"y": 108,
+						"w": 420,
+						"h": 363
+					},
+					"frame": {
+						"x": 561,
+						"y": 204,
+						"w": 420,
+						"h": 363
+					}
+				},
+				{
+					"filename": "Dead (1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 33,
+						"y": 69,
+						"w": 406,
+						"h": 356
+					},
+					"frame": {
+						"x": 0,
+						"y": 244,
+						"w": 406,
+						"h": 356
+					}
+				},
+				{
+					"filename": "Dead (7).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 109,
+						"y": 234,
+						"w": 552,
+						"h": 204
+					},
+					"frame": {
+						"x": 561,
+						"y": 0,
+						"w": 552,
+						"h": 204
+					}
+				},
+				{
+					"filename": "Dead (8).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 109,
+						"y": 234,
+						"w": 552,
+						"h": 204
+					},
+					"frame": {
+						"x": 561,
+						"y": 0,
+						"w": 552,
+						"h": 204
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7"
+	}
+}

@@ -1,0 +1,257 @@
+{
+    "id": "9055e673-32a2-4837-b573-136c6aa50c66",
+    "sceneType": "PREFAB",
+    "settings": {
+        "snapWidth": 2290,
+        "snapHeight": 510,
+        "exportClass": true,
+        "autoImport": true,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "compilerOutputLanguage": "TYPE_SCRIPT"
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "d9056375-192c-479f-a2b5-df17c30cba60",
+            "label": "CaptainDialog",
+            "components": [
+                "Dialog"
+            ],
+            "Dialog.DialogId": "capitan",
+            "Dialog.MessageText": "message",
+            "Dialog.Button1": "button_1",
+            "x": 412,
+            "y": 299,
+            "scaleX": 0.6,
+            "scaleY": 0.6,
+            "visible": false,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "3f8ff513-5875-4848-a098-aba330ae050c",
+                    "label": "background",
+                    "texture": {},
+                    "x": 59.957635255214086,
+                    "y": 216.40225286632375,
+                    "scaleX": 1000,
+                    "scaleY": 1000,
+                    "alpha": 0.72,
+                    "alphaTopLeft": 0.72,
+                    "alphaTopRight": 0.72,
+                    "alphaBottomLeft": 0.72,
+                    "alphaBottomRight": 0.72,
+                    "tintTopLeft": "#000000",
+                    "tintTopRight": "#000000",
+                    "tintBottomLeft": "#000000",
+                    "tintBottomRight": "#000000",
+                    "tintFill": true
+                },
+                {
+                    "type": "Video",
+                    "id": "68918375-5e12-47ea-9ebe-b304a8620584",
+                    "label": "captain_speaks",
+                    "x": -550.0423647447859,
+                    "y": -413.59774713367625,
+                    "originX": 0,
+                    "originY": 0,
+                    "videoKey": "captain-speaks"
+                },
+                {
+                    "type": "Text",
+                    "id": "1f726211-9653-45bd-87a7-7a015e5676b3",
+                    "label": "Button_1",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 425,
+                    "hitArea.height": 82.1484375,
+                    "x": 9.957635255214086,
+                    "y": 323.40225286632375,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "visible": false,
+                    "text": "New text",
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "align": "center",
+                    "fontSize": "80px",
+                    "backgroundColor": "#6c6c6cff",
+                    "list": [
+                        {
+                            "prefabId": "a06ed60b-79f1-4444-bf35-89046f71f954",
+                            "id": "174d21e2-ab33-4f63-88e3-ef3bb8cee4cc",
+                            "unlock": [
+                                "x",
+                                "y"
+                            ],
+                            "label": "onPointerDownScript",
+                            "list": [
+                                {
+                                    "prefabId": "6ee7a8b0-806a-451e-945d-20865c9d462c",
+                                    "id": "d5e090fe-ff9b-4c58-a02a-fee26e0f7dc1",
+                                    "unlock": [
+                                        "Dialog"
+                                    ],
+                                    "label": "printNextDialogMessage",
+                                    "Dialog": "this.__Dialog"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Text",
+                    "id": "f49295d1-d783-409d-b7ca-2323a6476cb7",
+                    "label": "Button_3",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 425,
+                    "hitArea.height": 82.1484375,
+                    "x": -232.0423647447859,
+                    "y": 321.40225286632375,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "visible": false,
+                    "text": "New text",
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "align": "center",
+                    "fontSize": "80px",
+                    "backgroundColor": "#6c6c6cff",
+                    "list": [
+                        {
+                            "prefabId": "a06ed60b-79f1-4444-bf35-89046f71f954",
+                            "id": "2d697edd-e3c2-45c2-90dd-ef6f0248cb49",
+                            "unlock": [
+                                "x",
+                                "y"
+                            ],
+                            "label": "onPointerDownScript_1",
+                            "list": [
+                                {
+                                    "prefabId": "2d3f9249-6fcd-4c7d-bd2f-77fa616af7e8",
+                                    "id": "723c7879-2859-42ca-ac78-91e5b7cf4eaf",
+                                    "unlock": [
+                                        "x",
+                                        "y"
+                                    ],
+                                    "label": "startSceneActionScript_1"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Text",
+                    "id": "860a98a3-b769-416f-80fa-efd6b079533b",
+                    "label": "Button_2",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 425,
+                    "hitArea.height": 82.1484375,
+                    "x": 247.9576352552141,
+                    "y": 321.40225286632375,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "visible": false,
+                    "text": "New text",
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "align": "center",
+                    "fontSize": "80px",
+                    "backgroundColor": "#6c6c6cff",
+                    "list": [
+                        {
+                            "prefabId": "a06ed60b-79f1-4444-bf35-89046f71f954",
+                            "id": "4e0ff154-6bf7-4348-9d45-215e9453805a",
+                            "unlock": [
+                                "x",
+                                "y"
+                            ],
+                            "label": "onPointerDownScript_2",
+                            "list": [
+                                {
+                                    "prefabId": "2d3f9249-6fcd-4c7d-bd2f-77fa616af7e8",
+                                    "id": "49a5e8e9-b7ce-4e95-862a-7ae04ba3968f",
+                                    "unlock": [
+                                        "x",
+                                        "y"
+                                    ],
+                                    "label": "startSceneActionScript_2"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Text",
+                    "id": "d439dcc1-3eea-4fa5-b417-2587f9200eb1",
+                    "label": "Message",
+                    "x": 9.957635255214086,
+                    "y": 99.40225286632375,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "New text New text New text New text New text New text New text New text New text New text New text New text New text ",
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "align": "center",
+                    "fontSize": "80px",
+                    "fontStyle": "italic",
+                    "backgroundColor": "",
+                    "maxLines": 4,
+                    "wordWrapWidth": 1100
+                },
+                {
+                    "type": "Container",
+                    "id": "4998cd34-1a8b-4fb7-b3f6-9eec637ca516",
+                    "label": "dialogFrame",
+                    "x": -686.666639380986,
+                    "y": -498.3333135313466,
+                    "list": [
+                        {
+                            "type": "NineSlice",
+                            "id": "ff3da4d1-65a6-47d0-9e85-2d8079dd8b0e",
+                            "label": "nineslice_1",
+                            "texture": {
+                                "key": "Hud copy"
+                            },
+                            "x": 686.6666259765626,
+                            "y": 496.3332927227029,
+                            "scaleX": 0.5,
+                            "scaleY": 0.5,
+                            "leftWidth": 200,
+                            "rightWidth": 200,
+                            "topHeight": 200,
+                            "bottomHeight": 200,
+                            "width": 2450,
+                            "height": 1900
+                        },
+                        {
+                            "type": "Image",
+                            "id": "4e529f0b-0b88-4b86-9d19-2228aee2cdcc",
+                            "label": "frame",
+                            "texture": {
+                                "key": "Frame"
+                            },
+                            "x": 686.6666259765626,
+                            "y": 36.3333141803741,
+                            "scaleX": 0.6,
+                            "scaleY": 0.65
+                        },
+                        {
+                            "type": "Pixelate",
+                            "id": "098415a9-0a6b-4fd2-9e92-8297214fa2c1",
+                            "label": "pixelateFx",
+                            "amount": 0.5
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

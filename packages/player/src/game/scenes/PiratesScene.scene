@@ -1,0 +1,480 @@
+{
+    "id": "09c552f0-d4d2-4407-9b85-ca2f19413d0a",
+    "sceneType": "SCENE",
+    "settings": {
+        "snapEnabled": true,
+        "snapWidth": 8,
+        "snapHeight": 8,
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [
+            "sliding-rule-react/public/assets/asset-pack.json"
+        ],
+        "createMethodName": "editorCreate",
+        "sceneKey": "PiratesScene",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1536,
+        "borderHeight": 1024
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "09262d0d-753f-42fc-9668-bc8f59672317",
+            "label": "background",
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "83d91f58-9b28-45e4-b3f4-dc02bfd5c803",
+                    "label": "sky_extended",
+                    "components": [
+                        "BackgroundFloating"
+                    ],
+                    "BackgroundFloating.EffectScale": 10,
+                    "texture": {
+                        "key": "sky_extended"
+                    },
+                    "x": 912,
+                    "y": 256,
+                    "scaleX": 1.2,
+                    "scaleY": 1.3
+                },
+                {
+                    "type": "Image",
+                    "id": "9ca133dd-db7d-40fa-ac16-1810b7830fec",
+                    "label": "sea_alone",
+                    "components": [
+                        "BackgroundFloating"
+                    ],
+                    "BackgroundFloating.EffectScale": 10,
+                    "texture": {
+                        "key": "sea-alone"
+                    },
+                    "x": 752,
+                    "y": 808,
+                    "scaleX": 1.2
+                }
+            ]
+        },
+        {
+            "type": "Image",
+            "id": "b8ae58f7-21f2-4e17-9934-d65536d90c54",
+            "label": "sea",
+            "texture": {
+                "key": "sea"
+            },
+            "originX": 0,
+            "originY": 0,
+            "visible": false
+        },
+        {
+            "type": "Container",
+            "id": "6876a73d-f96c-4c90-b4c4-724e61ca7bf5",
+            "label": "ShipsMiniGame"
+        },
+        {
+            "type": "Container",
+            "id": "389fb4d2-377d-40de-b714-580ccdb950b2",
+            "label": "ship_far_pirate",
+            "components": [
+                "ShipFloating",
+                "BackgroundFloating",
+                "CannonBall",
+                "HealthController",
+                "TweenPosition"
+            ],
+            "BackgroundFloating.EffectScale": 10,
+            "CannonBall.aim": "aim_1",
+            "CannonBall.Tag": "enemy",
+            "CannonBall.fireAnim": "fire",
+            "CannonBall.sizeFactor": -1,
+            "CannonBall.isEnemy": true,
+            "CannonBall.enemyGradient": "ship_far",
+            "CannonBall.enemyHealthController": "ship_player",
+            "HealthController.hitPoint01": "enemy_hp_1",
+            "HealthController.hitPoint02": "enemy_hp_2",
+            "HealthController.hitPoint03": "enemy_hp_3",
+            "HealthController.IsEnemy": true,
+            "TweenPosition.tweenTarget": "ship_far_pirate",
+            "x": 1391.2081000467824,
+            "y": 522.2013212209986,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "eb9de06a-cd29-4d8d-9f2d-359a6ae33ed9",
+                    "label": "ship_far_pirate_image",
+                    "texture": {
+                        "key": "ship-far-pirate"
+                    },
+                    "x": -15.20810004678242,
+                    "y": -74.20132122099858,
+                    "scaleX": 0.25,
+                    "scaleY": 0.25,
+                    "flipX": true,
+                    "list": [
+                        {
+                            "type": "Gradient",
+                            "id": "ab76fa80-08cf-4e25-a246-64a60603ca36",
+                            "label": "gradientFx_1",
+                            "color2": "#ff0000",
+                            "alpha": 1,
+                            "preFX": true
+                        }
+                    ]
+                },
+                {
+                    "type": "Sprite",
+                    "id": "0a3f4d47-3f39-45d4-bbd1-e69e7b420921",
+                    "label": "fire",
+                    "texture": {},
+                    "x": -63,
+                    "y": -10,
+                    "visible": false,
+                    "animationPlayMethod": 1,
+                    "animationKey": "turret-fire"
+                },
+                {
+                    "type": "Container",
+                    "id": "51a3af2b-e10c-4739-b68d-64c1671889f6",
+                    "label": "target_pointer",
+                    "x": 1,
+                    "y": 14
+                },
+                {
+                    "type": "Container",
+                    "id": "eb4140e9-991b-49ef-a856-ec4071800614",
+                    "label": "aim_1",
+                    "components": [
+                        "Aim"
+                    ],
+                    "Aim.Source": "target_pointer_1",
+                    "Aim.Target": "source_pointer",
+                    "x": -3687.2081298828125,
+                    "y": -482.2012939453125,
+                    "visible": false
+                },
+                {
+                    "type": "Container",
+                    "id": "3197eb76-d67a-46e5-911b-de001aaadf9e",
+                    "label": "target_pointer_1",
+                    "x": -63,
+                    "y": -10
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "id": "b7a952c6-141c-4afb-8181-a3a7e3ed1a1e",
+            "label": "ship-player",
+            "components": [
+                "ShipFloating",
+                "BackgroundFloating",
+                "CannonBall",
+                "HealthController"
+            ],
+            "BackgroundFloating.EffectScale": 6,
+            "CannonBall.aim": "aim",
+            "CannonBall.Tag": "player",
+            "CannonBall.fireAnim": "fire_1",
+            "CannonBall.enemyGradient": "ship_far_pirate_image",
+            "CannonBall.enemyHealthController": "ship_far_pirate",
+            "HealthController.hitPoint01": "player_hp_1",
+            "HealthController.hitPoint02": "player_hp_2",
+            "HealthController.hitPoint03": "player_hp_3",
+            "x": 440,
+            "y": 608,
+            "list": [
+                {
+                    "type": "Sprite",
+                    "id": "427284d7-0e36-46d7-93d3-13e10e09a251",
+                    "label": "fire_1",
+                    "texture": {},
+                    "x": 1.53780170418446,
+                    "y": 238.10074697089476,
+                    "scaleX": 3,
+                    "scaleY": 3,
+                    "visible": false,
+                    "animationKey": "turret-fire"
+                },
+                {
+                    "type": "Image",
+                    "id": "3ae756b1-462c-423b-8739-22b8abbc725d",
+                    "label": "ship_far",
+                    "texture": {
+                        "key": "ship-far"
+                    },
+                    "x": 1.53780170418446,
+                    "y": -1.899253029105239,
+                    "list": [
+                        {
+                            "type": "Gradient",
+                            "id": "c5484656-b7eb-489d-8ee3-120f5d1065db",
+                            "label": "gradientFx",
+                            "color2": "#ff0000",
+                            "alpha": 1,
+                            "preFX": true
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "id": "0557a87c-8cab-4f70-a733-92d4cb8b2750",
+                    "label": "source-pointer",
+                    "x": -22,
+                    "y": 294
+                },
+                {
+                    "type": "Container",
+                    "id": "cabf34b5-b097-4d38-9306-a92d8e0e16f0",
+                    "label": "aim",
+                    "components": [
+                        "Aim"
+                    ],
+                    "Aim.Source": "source_pointer",
+                    "Aim.Target": "target_pointer",
+                    "x": -400,
+                    "y": -568
+                }
+            ]
+        },
+        {
+            "prefabId": "9055e673-32a2-4837-b573-136c6aa50c66",
+            "id": "d036b7f0-9d15-4b01-9c55-65b0f038f6fa",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "CaptainDialog",
+            "x": 768,
+            "y": 544
+        },
+        {
+            "type": "Container",
+            "id": "e37c12ce-f6c3-4d47-bcca-0f6fca09355b",
+            "label": "HUD",
+            "y": 8,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "90551b2f-442e-43ce-a01e-6123e15ff128",
+                    "label": "flag_1",
+                    "texture": {
+                        "key": "Flag 2 copy"
+                    },
+                    "x": 1248,
+                    "y": 80,
+                    "scaleX": 0.2,
+                    "scaleY": 0.2,
+                    "angle": -2
+                },
+                {
+                    "type": "Image",
+                    "id": "d153da9f-c6b5-4377-a9a5-4d8621abf046",
+                    "label": "flag",
+                    "texture": {
+                        "key": "Flag 1"
+                    },
+                    "x": 288,
+                    "y": 80,
+                    "scaleX": 0.2,
+                    "scaleY": 0.2,
+                    "angle": 2,
+                    "flipX": true
+                },
+                {
+                    "type": "Image",
+                    "id": "91238c57-cf16-4bb3-89a9-cd20b00b1d1a",
+                    "label": "flag_Pole",
+                    "texture": {
+                        "key": "Flag Pole"
+                    },
+                    "x": 336,
+                    "y": 48,
+                    "scaleX": 0.2,
+                    "scaleY": 0.2
+                },
+                {
+                    "type": "Image",
+                    "id": "2628e147-33a3-475f-9ae7-0202e77e4797",
+                    "label": "flag_Pole_1",
+                    "texture": {
+                        "key": "Flag Pole"
+                    },
+                    "x": 1200,
+                    "y": 48,
+                    "scaleX": 0.2,
+                    "scaleY": 0.2,
+                    "flipX": true
+                },
+                {
+                    "type": "Image",
+                    "id": "e7194afa-c5c2-42e8-a230-37758d928371",
+                    "label": "hud_2",
+                    "texture": {
+                        "key": "Hud 2"
+                    },
+                    "x": 768,
+                    "y": 48,
+                    "scaleX": 0.25,
+                    "scaleY": 0.25,
+                    "visible": false
+                },
+                {
+                    "type": "ThreeSlice",
+                    "id": "ca64363f-25e7-41fb-8c2a-159af0f4863c",
+                    "label": "threeslice_2",
+                    "texture": {
+                        "key": "Hud 2"
+                    },
+                    "x": 768,
+                    "y": 48,
+                    "scaleX": 0.3,
+                    "scaleY": 0.25,
+                    "width": 2200,
+                    "height": 370,
+                    "leftWidth": 200,
+                    "rightWidth": 200
+                },
+                {
+                    "type": "Image",
+                    "id": "4ee7cdd0-b6e7-4344-a08f-10e561ba3ae1",
+                    "label": "player_hp_3",
+                    "texture": {
+                        "key": "Heart"
+                    },
+                    "x": 496,
+                    "y": 48,
+                    "scaleX": 0.15,
+                    "scaleY": 0.15
+                },
+                {
+                    "type": "Image",
+                    "id": "8c80b54a-aa1f-4d25-ba55-8c08c4aa253a",
+                    "label": "player_hp_2",
+                    "texture": {
+                        "key": "Heart"
+                    },
+                    "x": 568,
+                    "y": 48,
+                    "scaleX": 0.15,
+                    "scaleY": 0.15
+                },
+                {
+                    "type": "Image",
+                    "id": "a5a363a4-57fc-4cc2-a70d-63dddebe7d8c",
+                    "label": "player_hp_1",
+                    "texture": {
+                        "key": "Heart"
+                    },
+                    "x": 640,
+                    "y": 48,
+                    "scaleX": 0.15,
+                    "scaleY": 0.15
+                },
+                {
+                    "type": "Image",
+                    "id": "ea6b6a02-1a1b-4203-bbdf-66a0ef49b329",
+                    "label": "enemy_hp_3",
+                    "texture": {
+                        "key": "Heart"
+                    },
+                    "x": 1040,
+                    "y": 48,
+                    "scaleX": 0.15,
+                    "scaleY": 0.15
+                },
+                {
+                    "type": "Image",
+                    "id": "bfb4dcb6-27be-4d08-868b-ba9a996bb093",
+                    "label": "enemy_hp_2",
+                    "texture": {
+                        "key": "Heart"
+                    },
+                    "x": 968,
+                    "y": 48,
+                    "scaleX": 0.15,
+                    "scaleY": 0.15
+                },
+                {
+                    "type": "Image",
+                    "id": "d415c820-7e7a-44e7-abc2-f89674a9f744",
+                    "label": "enemy_hp_1",
+                    "texture": {
+                        "key": "Heart"
+                    },
+                    "x": 896,
+                    "y": 48,
+                    "scaleX": 0.15,
+                    "scaleY": 0.15
+                },
+                {
+                    "type": "Image",
+                    "id": "d668ee50-7072-480c-adfa-c59e693d67f8",
+                    "label": "scroll_2",
+                    "texture": {
+                        "key": "Scroll 2"
+                    },
+                    "x": 768,
+                    "y": 40,
+                    "scaleX": 0.055,
+                    "scaleY": 0.06
+                },
+                {
+                    "type": "Image",
+                    "id": "7631da62-0650-49d0-bf57-6f58f0e140bd",
+                    "label": "frame_1",
+                    "texture": {
+                        "key": "Frame"
+                    },
+                    "x": 768,
+                    "y": 1040,
+                    "scaleX": 0.8,
+                    "scaleY": 0.8,
+                    "flipY": true,
+                    "visible": false
+                },
+                {
+                    "type": "Image",
+                    "id": "37fc3afe-795f-4163-9383-cddaa2460ae7",
+                    "label": "swords",
+                    "texture": {
+                        "key": "Swords"
+                    },
+                    "x": 768,
+                    "y": 40,
+                    "scaleX": 0.1,
+                    "scaleY": 0.1
+                },
+                {
+                    "type": "Pixelate",
+                    "id": "96e7a766-ef11-498a-821a-e7fc2dd18023",
+                    "label": "pixelateFx_1",
+                    "amount": 0
+                },
+                {
+                    "type": "ThreeSlice",
+                    "id": "01c643f4-aa9d-4884-910b-a3f1cee8dea0",
+                    "label": "threeslice_1",
+                    "texture": {
+                        "key": "Frame"
+                    },
+                    "x": 768,
+                    "y": 1024,
+                    "scaleX": 0.5,
+                    "scaleY": 0.5,
+                    "angle": -180,
+                    "width": 4000,
+                    "height": 510,
+                    "leftWidth": 400,
+                    "rightWidth": 400
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

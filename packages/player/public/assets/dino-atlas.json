@@ -1,0 +1,229 @@
+{
+	"textures": [
+		{
+			"image": "dino-atlas",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1092,
+				"h": 1735
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Walk (4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 11,
+						"w": 360,
+						"h": 442
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 360,
+						"h": 442
+					}
+				},
+				{
+					"filename": "Walk (5).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 23,
+						"w": 357,
+						"h": 434
+					},
+					"frame": {
+						"x": 0,
+						"y": 442,
+						"w": 357,
+						"h": 434
+					}
+				},
+				{
+					"filename": "Walk (9).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 11,
+						"w": 343,
+						"h": 432
+					},
+					"frame": {
+						"x": 0,
+						"y": 876,
+						"w": 343,
+						"h": 432
+					}
+				},
+				{
+					"filename": "Walk (3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 11,
+						"w": 358,
+						"h": 427
+					},
+					"frame": {
+						"x": 0,
+						"y": 1308,
+						"w": 358,
+						"h": 427
+					}
+				},
+				{
+					"filename": "Walk (10).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 23,
+						"w": 359,
+						"h": 424
+					},
+					"frame": {
+						"x": 343,
+						"y": 876,
+						"w": 359,
+						"h": 424
+					}
+				},
+				{
+					"filename": "Walk (8).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 12,
+						"w": 343,
+						"h": 420
+					},
+					"frame": {
+						"x": 357,
+						"y": 442,
+						"w": 343,
+						"h": 420
+					}
+				},
+				{
+					"filename": "Walk (2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 23,
+						"w": 359,
+						"h": 410
+					},
+					"frame": {
+						"x": 700,
+						"y": 442,
+						"w": 359,
+						"h": 410
+					}
+				},
+				{
+					"filename": "Walk (7).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 23,
+						"w": 359,
+						"h": 404
+					},
+					"frame": {
+						"x": 360,
+						"y": 0,
+						"w": 359,
+						"h": 404
+					}
+				},
+				{
+					"filename": "Walk (6).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 35,
+						"w": 373,
+						"h": 400
+					},
+					"frame": {
+						"x": 719,
+						"y": 0,
+						"w": 373,
+						"h": 400
+					}
+				},
+				{
+					"filename": "Walk (1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 35,
+						"w": 376,
+						"h": 390
+					},
+					"frame": {
+						"x": 358,
+						"y": 1300,
+						"w": 376,
+						"h": 390
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7"
+	}
+}

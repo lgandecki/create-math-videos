@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Circular Slide Rule</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        overscroll-behavior: none;
+      }
+      canvas {
+        cursor: grab;
+        touch-action: none;
+      }
+      canvas:active {
+        cursor: grabbing;
+      }
+      .font-mono {
+        font-family: "Space Mono", monospace;
+      }
+      .text-green-500 {
+        color: #22c55e;
+      }
+      .text-pink-500 {
+        color: #ec4899;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-900 text-slate-200 flex flex-col md:flex-row items-center justify-center min-h-screen p-4 overflow-hidden"
+  >
+    <div class="w-full md:w-1/2 lg:w-2/5 md:pr-8 flex flex-col justify-center h-full">
+      <div class="bg-slate-800 p-6 rounded-xl shadow-2xl border border-slate-700">
+        <h1 class="text-2xl font-bold text-cyan-400 mb-2">Circular Slide Rule</h1>
+        <p class="text-slate-400 mb-4">
+          A tool to understand logarithms by turning multiplication into addition (rotation).
+        </p>
+
+        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700 mb-4">
+          <h2 class="font-bold text-lg mb-2 text-slate-300">How It Works</h2>
+          <p class="text-slate-400 text-sm">
+            The rule is:
+            <span class="font-mono"
+              >log(<span class="text-green-500">A</span> × <span class="text-pink-500">B</span>) = log(<span
+                class="text-green-500"
+                >A</span
+              >) + log(<span class="text-pink-500">B</span>)</span
+            >. On the slide rule, "adding logs" means adding rotations.
+          </p>
+          <ol class="list-decimal list-inside mt-2 text-sm text-slate-400 space-y-1">
+            <li>
+              Align the inner disk's <span class="font-bold text-pink-500">'1'</span> with number
+              <span class="font-bold text-green-500">'A'</span> on the outer disk.
+            </li>
+            <li>Find number <span class="font-bold text-pink-500">'B'</span> on the inner disk.</li>
+            <li>The number it points to on the outer disk is the answer.</li>
+          </ol>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="valA" class="block text-sm font-medium text-slate-400">Number 'A' (Green)</label>
+            <input
+              type="number"
+              id="valA"
+              value="2"
+              class="mt-1 block w-full bg-slate-700 border-slate-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+            />
+          </div>
+          <div>
+            <label for="valB" class="block text-sm font-medium text-slate-400">Number 'B' (Pink)</label>
+            <input
+              type="number"
+              id="valB"
+              value="4"
+              class="mt-1 block w-full bg-slate-700 border-slate-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
+            />
+          </div>
+        </div>
+
+        <button
+          id="multiplyBtn"
+          class="mt-4 w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200 shadow-lg"
+        >
+          Calculate A × B
+        </button>
+
+        <div id="result" class="mt-4 text-center bg-slate-700 p-3 rounded-lg">
+          <p class="text-slate-400">Result will appear here.</p>
+        </div>
+        <p class="text-center text-xs text-slate-500 mt-4">You can also drag the inner disk to explore.</p>
+      </div>
+    </div>
+
+    <div class="w-full md:w-1/2 lg:w-3/5 h-[60vh] md:h-[90vh] p-4 flex items-center justify-center">
+      <canvas id="slideRuleCanvas"></canvas>
+    </div>
+
+    <script>
+      // --- Canvas and Drawing Setup ---
+      const canvas = document.getElementById("slideRuleCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Elements
+      const multiplyBtn = document.getElementById("multiplyBtn");
+      const valAInput = document.getElementById("valA");
+      const valBInput = document.getElementById("valB");
+      const resultDiv = document.getElementById("result");
+
+      let size, center, outerRadius, innerRadius;
+      let innerRotation = 0; // Current rotation in radians
+      let targetRotation = 0; // Target rotation for animation
+      let animationFrame;
+
+      // --- Interaction State ---
+      let isDragging = false;
+      let dragStartAngle = 0;
+
+      // --- Guide lines ---
+      let guideA = { show: false, angle: 0 };
+      let guideB = { show: false, angle: 0 };
+      let guideResult = { show: false, angle: 0 };
+
+      function setupCanvas() {
+        const container = canvas.parentElement;
+        const dpr = window.devicePixelRatio || 1;
+        const rect = container.getBoundingClientRect();
+        const minDim = Math.min(rect.width, rect.height);
+
+        canvas.width = minDim * dpr;
+        canvas.height = minDim * dpr;
+        canvas.style.width = `${minDim}px`;
+        canvas.style.height = `${minDim}px`;
+
+        ctx.scale(dpr, dpr);
+
+        size = minDim;
+        center = { x: size / 2, y: size / 2 };
+        outerRadius = size * 0.45;
+        innerRadius = size * 0.35;
+
+        draw();
+      }
+
+      // --- Logarithmic Scale Logic ---
+      function getAngleForValue(value) {
+        if (value <= 1) return 0; // Log of <=1 is <=0, clamp to 0 angle
+        const logValue = Math.log10(value);
+        // The scale is for 1-10, so log values from 0-1.
+        // We use modulo to handle numbers > 10 (e.g., 20 has same position as 2)
+        return (logValue % 1) * 2 * Math.PI;
+      }
+
+      function getValueForAngle(angle, rotationOffset = 0) {
+        let normalizedAngle = (angle - rotationOffset) % (2 * Math.PI);
+        if (normalizedAngle < 0) normalizedAngle += 2 * Math.PI;
+
+        const logValue = normalizedAngle / (2 * Math.PI);
+        return Math.pow(10, logValue);
+      }
+
+      // --- Drawing Functions ---
+      function drawScale(radius, isInner = false) {
+        ctx.save();
+        ctx.translate(center.x, center.y);
+        if (isInner) {
+          ctx.rotate(innerRotation);
+        }
+
+        // Draw major ticks (1-10)
+        for (let i = 1; i <= 10; i++) {
+          const angle = getAngleForValue(i);
+
+          // Draw Tick
+          ctx.save();
+          ctx.rotate(angle);
+          ctx.beginPath();
+          ctx.moveTo(radius - size * 0.025, 0);
+          ctx.lineTo(radius + size * 0.0255, 0);
+          ctx.strokeStyle = "#a78bfa";
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          ctx.restore();
+
+          // Draw Number
+          const textRadius = isInner ? radius - size * 0.07 : radius - size * 0.04;
+          const textX = textRadius * Math.cos(angle);
+          const textY = textRadius * Math.sin(angle);
+
+          ctx.fillStyle = isInner ? "#ec4899" : "#22c55e"; // Pink for inner, Green for outer
+          ctx.font = `bold ${size * 0.04}px 'Space Mono'`;
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+
+          ctx.save();
+          ctx.translate(textX, textY);
+          if (isInner) {
+            ctx.rotate(-innerRotation); // Counter-rotate to keep text upright relative to the user
+          }
+          ctx.fillText(i === 10 ? "1" : String(i), 0, 0);
+          ctx.restore();
+        }
+
+        // Draw minor ticks
+        for (let i = 11; i < 100; i++) {
+          const angle = getAngleForValue(i / 10);
+          ctx.save();
+          ctx.rotate(angle);
+          ctx.beginPath();
+          ctx.moveTo(radius - size * 0.015, 0);
+          ctx.lineTo(radius, 0);
+          ctx.strokeStyle = "#5eead4";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        ctx.restore();
+      }
+
+      function drawGuideLine(guide, color, textLabel, onInner = false) {
+        if (!guide.show) return;
+        ctx.save();
+        ctx.translate(center.x, center.y);
+        let totalAngle = guide.angle;
+        if (onInner) {
+          totalAngle += innerRotation;
+        }
+        ctx.rotate(totalAngle);
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(outerRadius + size * 0.05, 0);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2.5;
+        ctx.setLineDash([8, 4]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.rotate(-totalAngle);
+        const textX = (outerRadius + size * 0.08) * Math.cos(totalAngle);
+        const textY = (outerRadius + size * 0.08) * Math.sin(totalAngle);
+        ctx.fillStyle = color;
+        ctx.font = `bold ${size * 0.05}px 'Inter'`;
+        ctx.fillText(textLabel, textX, textY);
+
+        ctx.restore();
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, size, size);
+
+        ctx.beginPath();
+        ctx.arc(center.x, center.y, outerRadius + size * 0.04, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba(23, 37, 82, 0.5)";
+        ctx.fill();
+        ctx.strokeStyle = "#1e293b";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.save();
+        ctx.translate(center.x, center.y);
+        ctx.rotate(innerRotation);
+        ctx.beginPath();
+        ctx.arc(0, 0, innerRadius - size * 0.04, 0, 2 * Math.PI);
+        ctx.fillStyle = "#334155";
+        ctx.fill();
+        ctx.strokeStyle = "#1e293b";
+        ctx.stroke();
+        ctx.restore();
+
+        drawScale(outerRadius, false);
+        drawScale(innerRadius, true);
+
+        ctx.beginPath();
+        ctx.arc(center.x, center.y, size * 0.02, 0, 2 * Math.PI);
+        ctx.fillStyle = "#94a3b8";
+        ctx.fill();
+
+        // Match guide lines to new colors
+        drawGuideLine(guideA, "#22c55e", "A");
+        drawGuideLine(guideB, "#ec4899", "B", true);
+        // drawGuideLine(guideResult, "#f97316", "Result");
+      }
+
+      function animate() {
+        const diff = targetRotation - innerRotation;
+        if (Math.abs(diff) > 0.001) {
+          innerRotation += diff * 0.1;
+          draw();
+          animationFrame = requestAnimationFrame(animate);
+        } else {
+          innerRotation = targetRotation;
+          draw();
+          if (guideB.show) {
+            updateResult();
+          }
+        }
+      }
+
+      function updateResult() {
+        const valA = parseFloat(valAInput.value) || 0;
+        const valB = parseFloat(valBInput.value) || 0;
+        if (valA <= 0 || valB <= 0) {
+          resultDiv.innerHTML = `<p class="text-red-400">Please enter positive numbers.</p>`;
+          return;
+        }
+
+        const resultAngle = getAngleForValue(valA) + getAngleForValue(valB);
+        const resultValue = getValueForAngle(resultAngle);
+
+        guideResult.angle = resultAngle;
+        guideResult.show = true;
+        draw();
+
+        resultDiv.innerHTML = `
+                <p class="text-slate-300 font-medium">Result: <span class="font-bold text-orange-400 text-lg">${resultValue.toFixed(
+                  2
+                )}</span></p>
+                <p class="text-xs text-slate-500">Actual: ${(valA * valB).toFixed(2)}</p>
+            `;
+      }
+
+      // --- Event Handlers ---
+      multiplyBtn.addEventListener("click", () => {
+        const valA = parseFloat(valAInput.value) || 0;
+        const valB = parseFloat(valBInput.value) || 0;
+
+        if (valA <= 0 || valB <= 0) {
+          resultDiv.innerHTML = `<p class="text-red-400">Please enter positive numbers.</p>`;
+          guideA.show = guideB.show = guideResult.show = false;
+          draw();
+          return;
+        }
+
+        guideA.angle = getAngleForValue(valA);
+        guideA.show = true;
+
+        guideB.angle = getAngleForValue(valB);
+        guideB.show = true;
+
+        guideResult.show = false;
+
+        targetRotation = guideA.angle;
+
+        if (animationFrame) cancelAnimationFrame(animationFrame);
+        animate();
+      });
+
+      canvas.addEventListener("mousedown", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const dx = x - center.x;
+        const dy = y - center.y;
+        const distSq = dx * dx + dy * dy;
+
+        if (distSq < (innerRadius - size * 0.04) * (innerRadius - size * 0.04)) {
+          isDragging = true;
+          dragStartAngle = Math.atan2(dy, dx) - innerRotation;
+          canvas.style.cursor = "grabbing";
+        }
+      });
+
+      window.addEventListener("mouseup", () => {
+        isDragging = false;
+        canvas.style.cursor = "grab";
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const angle = Math.atan2(y - center.y, x - center.x);
+
+        guideA.show = guideB.show = guideResult.show = false;
+        resultDiv.innerHTML = `<p class="text-slate-400">Result will appear here.</p>`;
+
+        innerRotation = angle - dragStartAngle;
+        targetRotation = innerRotation;
+        draw();
+      });
+
+      // --- Initial Load ---
+      window.addEventListener("resize", setupCanvas);
+      document.fonts.ready
+        .then(() => {
+          setupCanvas();
+        })
+        .catch((err) => {
+          console.error("Font loading failed, drawing anyway.", err);
+          setupCanvas();
+        });
+    </script>
+  </body>
+</html>

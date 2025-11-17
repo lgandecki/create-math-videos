@@ -1,0 +1,187 @@
+{
+	"textures": [
+		{
+			"image": "dino-run-atlas",
+			"format": "RGBA8888",
+			"size": {
+				"w": 2048,
+				"h": 793
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Run (3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 5,
+						"w": 423,
+						"h": 376
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 423,
+						"h": 376
+					}
+				},
+				{
+					"filename": "Run (1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 68,
+						"w": 422,
+						"h": 357
+					},
+					"frame": {
+						"x": 423,
+						"y": 0,
+						"w": 422,
+						"h": 357
+					}
+				},
+				{
+					"filename": "Run (5).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 69,
+						"w": 419,
+						"h": 363
+					},
+					"frame": {
+						"x": 845,
+						"y": 0,
+						"w": 419,
+						"h": 363
+					}
+				},
+				{
+					"filename": "Run (8).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 45,
+						"y": 38,
+						"w": 397,
+						"h": 422
+					},
+					"frame": {
+						"x": 423,
+						"y": 357,
+						"w": 397,
+						"h": 422
+					}
+				},
+				{
+					"filename": "Run (4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 45,
+						"y": 36,
+						"w": 396,
+						"h": 417
+					},
+					"frame": {
+						"x": 0,
+						"y": 376,
+						"w": 396,
+						"h": 417
+					}
+				},
+				{
+					"filename": "Run (2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 45,
+						"y": 36,
+						"w": 396,
+						"h": 403
+					},
+					"frame": {
+						"x": 1264,
+						"y": 0,
+						"w": 396,
+						"h": 403
+					}
+				},
+				{
+					"filename": "Run (7).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 8,
+						"w": 388,
+						"h": 405
+					},
+					"frame": {
+						"x": 1660,
+						"y": 363,
+						"w": 388,
+						"h": 405
+					}
+				},
+				{
+					"filename": "Run (6).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 46,
+						"y": 35,
+						"w": 394,
+						"h": 398
+					},
+					"frame": {
+						"x": 820,
+						"y": 363,
+						"w": 394,
+						"h": 398
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7"
+	}
+}

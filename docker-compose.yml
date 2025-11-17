@@ -1,0 +1,34 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    env_file:
+      - .env
+    environment:
+      DEST_DIR: /data/public
+      MANIM_DIR: /app/packages/math-image-creator
+    volumes:
+      - media:/data/public
+      - anthropic_creds:/root/.anthropic
+    ports:
+      - "3001:3001"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:3001}
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+    volumes:
+      - media:/data/public
+    restart: unless-stopped
+
+volumes:
+  media:
+  anthropic_creds:

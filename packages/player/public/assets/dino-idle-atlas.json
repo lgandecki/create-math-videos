@@ -1,0 +1,208 @@
+{
+	"textures": [
+		{
+			"image": "dino-idle-atlas",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1837,
+				"h": 1943
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Idle (1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 31,
+						"w": 369,
+						"h": 394
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 369,
+						"h": 394
+					}
+				},
+				{
+					"filename": "Idle (2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 34,
+						"w": 369,
+						"h": 391
+					},
+					"frame": {
+						"x": 0,
+						"y": 394,
+						"w": 369,
+						"h": 391
+					}
+				},
+				{
+					"filename": "Idle (3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 38,
+						"w": 368,
+						"h": 387
+					},
+					"frame": {
+						"x": 0,
+						"y": 785,
+						"w": 368,
+						"h": 387
+					}
+				},
+				{
+					"filename": "Idle (9).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 38,
+						"w": 368,
+						"h": 387
+					},
+					"frame": {
+						"x": 0,
+						"y": 1172,
+						"w": 368,
+						"h": 387
+					}
+				},
+				{
+					"filename": "Idle (4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 41,
+						"w": 367,
+						"h": 384
+					},
+					"frame": {
+						"x": 0,
+						"y": 1559,
+						"w": 367,
+						"h": 384
+					}
+				},
+				{
+					"filename": "Idle (8).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 42,
+						"w": 368,
+						"h": 383
+					},
+					"frame": {
+						"x": 367,
+						"y": 1559,
+						"w": 368,
+						"h": 383
+					}
+				},
+				{
+					"filename": "Idle (5).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 43,
+						"w": 368,
+						"h": 382
+					},
+					"frame": {
+						"x": 735,
+						"y": 1559,
+						"w": 368,
+						"h": 382
+					}
+				},
+				{
+					"filename": "Idle (6).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 44,
+						"w": 367,
+						"h": 381
+					},
+					"frame": {
+						"x": 1103,
+						"y": 1559,
+						"w": 367,
+						"h": 381
+					}
+				},
+				{
+					"filename": "Idle (7).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 45,
+						"w": 367,
+						"h": 380
+					},
+					"frame": {
+						"x": 1470,
+						"y": 1559,
+						"w": 367,
+						"h": 380
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7"
+	}
+}

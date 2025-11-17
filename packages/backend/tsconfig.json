@@ -1,0 +1,9 @@
+// packages/backend/tsconfig.json
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    /* We only need to override what's different from the base */
+    "module": "esnext" // Use a more permissive module setting for now
+  },
+  "include": ["src"]
+}

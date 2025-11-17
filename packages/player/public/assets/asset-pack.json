@@ -1,0 +1,129 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "src/game/pirates/animations/animations.json",
+                "type": "animation",
+                "key": "animations"
+            },
+            {
+                "url": "public/assets/black-fill.png",
+                "type": "image",
+                "key": "black-fill"
+            },
+            {
+                "url": [
+                    "public/assets/captain-speaks.mp4"
+                ],
+                "type": "video",
+                "key": "captain-speaks"
+            },
+            {
+                "url": "public/assets/ui/Flag 1.png",
+                "type": "image",
+                "key": "Flag 1"
+            },
+            {
+                "url": "public/assets/ui/Flag 2 copy.png",
+                "type": "image",
+                "key": "Flag 2 copy"
+            },
+            {
+                "url": "public/assets/ui/Flag Pole.png",
+                "type": "image",
+                "key": "Flag Pole"
+            },
+            {
+                "url": "public/assets/ui/Frame.png",
+                "type": "image",
+                "key": "Frame"
+            },
+            {
+                "url": "public/assets/ui/Heart.png",
+                "type": "image",
+                "key": "Heart"
+            },
+            {
+                "url": "public/assets/ui/Heart Icon.png",
+                "type": "image",
+                "key": "Heart Icon"
+            },
+            {
+                "url": "public/assets/ui/Hud.png",
+                "type": "image",
+                "key": "Hud"
+            },
+            {
+                "url": "public/assets/ui/Hud 2.png",
+                "type": "image",
+                "key": "Hud 2"
+            },
+            {
+                "url": "public/assets/ui/Hud copy.png",
+                "type": "image",
+                "key": "Hud copy"
+            },
+            {
+                "url": "public/assets/pixel-art-bit-fire-objects.png",
+                "frameConfig": {
+                    "frameWidth": 84,
+                    "frameHeight": 82,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 4,
+                    "margin": 4
+                },
+                "type": "spritesheet",
+                "key": "pixel-art-bit-fire-objects"
+            },
+            {
+                "url": "public/assets/ui/Scroll 1.png",
+                "type": "image",
+                "key": "Scroll 1"
+            },
+            {
+                "url": "public/assets/ui/Scroll 2.png",
+                "type": "image",
+                "key": "Scroll 2"
+            },
+            {
+                "url": "public/assets/sea.png",
+                "type": "image",
+                "key": "sea"
+            },
+            {
+                "url": "public/assets/sea-alone.png",
+                "type": "image",
+                "key": "sea-alone"
+            },
+            {
+                "url": "public/assets/ship-far.png",
+                "type": "image",
+                "key": "ship-far"
+            },
+            {
+                "url": "public/assets/ship-far-pirate.png",
+                "type": "image",
+                "key": "ship-far-pirate"
+            },
+            {
+                "url": "public/assets/sky_extended.png",
+                "type": "image",
+                "key": "sky_extended"
+            },
+            {
+                "url": "public/assets/ui/Swords.png",
+                "type": "image",
+                "key": "Swords"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false,
+        "visible": true
+    }
+}
