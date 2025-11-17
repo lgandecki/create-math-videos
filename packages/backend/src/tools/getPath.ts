@@ -19,6 +19,6 @@ if (require.main === module) {
     result:
       "The video was created successfully and is available at /path/to/video.mp4",
   };
-  const path = await getPath(lastEvent);
+  const path = await getPath(lastEvent as VideoCreationEvent);
   console.log("path", path);
 }

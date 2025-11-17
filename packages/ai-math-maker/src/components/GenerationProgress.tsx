@@ -17,22 +17,23 @@ export function GenerationProgress({
       return;
     }
 
-    let interval: number;
-
-    interval = setInterval(() => {
-      setFakeProgress((prev) => {
-        if (prev < 90) {
-          // z 0 do 90 przez 5 min = 300s / 90 kroków = co 3333ms
-          return prev + 1;
-        } else if (prev < 100) {
-          // każdy procent powyżej 90 trwa minutę
-          return prev + 1;
-        } else {
-          clearInterval(interval);
-          return prev;
-        }
-      });
-    }, fakeProgress < 90 ? 3333 : 60000); // 3.3s lub 60s
+    const interval = setInterval(
+      () => {
+        setFakeProgress((prev) => {
+          if (prev < 90) {
+            // z 0 do 90 przez 5 min = 300s / 90 kroków = co 3333ms
+            return prev + 1;
+          } else if (prev < 100) {
+            // każdy procent powyżej 90 trwa minutę
+            return prev + 1;
+          } else {
+            clearInterval(interval);
+            return prev;
+          }
+        });
+      },
+      fakeProgress < 90 ? 3333 : 60000,
+    ); // 3.3s lub 60s
 
     return () => clearInterval(interval);
   }, [generationState.isGenerating, fakeProgress]);
@@ -75,8 +76,7 @@ export function GenerationProgress({
               <Progress value={progressValue} />
             </div>
             <div className="text-xs text-muted-foreground min-w-[3rem]">
-              {progressValue}%
-              {/*{generationState.progress}%*/}
+              {progressValue}%{/*{generationState.progress}%*/}
             </div>
           </div>
         </div>
