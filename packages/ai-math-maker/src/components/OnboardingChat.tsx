@@ -42,22 +42,11 @@ export function OnboardingChat({ onGenerate }: OnboardingChatProps) {
           className="min-h-[120px] text-lg"
         />
 
-        <div className="flex gap-2">
-          <Button
-            onClick={handleSend}
-            disabled={!prompt.trim()}
-            className="flex-1 gap-2"
-            size="lg"
-          >
-            <Send className="h-4 w-4" />
-            Chat
-          </Button>
-
+        <div className="flex justify-end">
           <Button
             onClick={handleSend}
             disabled={!prompt.trim()}
             variant="default"
-            className="gap-2"
             size="lg"
           >
             <Sparkles className="h-4 w-4" />
