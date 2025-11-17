@@ -1,7 +1,10 @@
 # AI Math Video Maker
 
-Backend + frontend tooling for generating Manim-based math videos with Claude.
+An AI-powered editor for creating Manim-based math videos from natural language.
 
+*Commissioned by Kenneth Hawthorn for the [Austin STEM Center](https://AustinSTEMCenter.org)*
+
+<img width="3794" height="2066" alt="CleanShot 2025-11-17 at 18 52 09@2x" src="https://github.com/user-attachments/assets/c7a84a80-41f5-461d-a9fc-99cba848654f" />
 
 https://github.com/user-attachments/assets/f6547a68-eab7-46be-a24c-c0f8c58d58bd
 
