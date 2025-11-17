@@ -1,4 +1,4 @@
-# AI Math Maker
+# AI Math Video Maker
 
 Backend + frontend tooling for generating Manim-based math videos with Claude.
 
